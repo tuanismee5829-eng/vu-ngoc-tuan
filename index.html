@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessica ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:Arial,sans-serif;
+}
+
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:white;
+    z-index:10;
+}
+
+.center h1{
+    font-size:60px;
+    text-shadow:0 0 15px white;
+}
+
+.falling{
+    position:absolute;
+    top:-50px;
+    color:white;
+    font-weight:bold;
+    pointer-events:none;
+    animation:fall linear forwards;
+    text-shadow:0 0 10px rgba(255,255,255,0.8);
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="center">
+    <h1>❤️ Jessica ❤️</h1>
+</div>
+
+<script>
+
+const words = [
+    "Jessica ❤️",
+    "Yêu em ❤️",
+    "Nhớ em 🥺",
+    "Mãi bên nhau 💕",
+    "Jessica 💖",
+    "Anh thương em 💘",
+    "Love You ❤️"
+];
+
+function createWord(){
+    const text = document.createElement("div");
+    text.className = "falling";
+
+    text.innerHTML = words[Math.floor(Math.random() * words.length)];
+
+    text.style.left = Math.random() * 100 + "vw";
+    text.style.fontSize = (18 + Math.random() * 22) + "px";
+
+    const duration = 4 + Math.random() * 4;
+    text.style.animationDuration = duration + "s";
+
+    document.body.appendChild(text);
+
+    setTimeout(() => {
+        text.remove();
+    }, duration * 1000);
+}
+
+setInterval(createWord, 150);
+
+</script>
+
+</body>
+</html>
